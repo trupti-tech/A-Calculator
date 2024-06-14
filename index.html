@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>A Basic Calculator App</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="textarea">
+            <input type="text" id="textarea">
+        </div>
+        <div class="buttons">
+            <div class="numbers">
+                <button class="number" id="b1">1</button>
+                <button class="number" id="b2">2</button>
+                <button class="number" id="b3">3</button>
+                <button class="number" id="b4">4</button>
+                <button class="number" id="b5">5</button>
+                <button class="number" id="b6">6</button>
+                <button class="number" id="b7">7</button>
+                <button class="number" id="b8">8</button>
+                <button class="number" id="b9">9</button>
+                <button class="number" id="b0">0</button>
+                <button class="number" id="b_period">.</button>
+            </div>
+            <div class="operations">
+                <button class="operation" id="add">+</button>
+                <button class="operation" id="subtract">-</button>
+                <button class="operation" id="multiply">*</button>
+                <button class="operation" id="divide">/</button>
+                <button id="equals" onclick="evaluateExpression()">=</button>
+                <button id="clear" onclick="clearOne()">C</button>
+                <button id="clearAll" onclick="clearAll()">CE</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
