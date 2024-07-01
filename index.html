@@ -7,9 +7,16 @@
     <title>A Basic Calculator App</title>
 </head>
 <body>
+    <div class="historyContainer">
+        <div class="title">
+            <p>History</p>
+            <button id="clearHistory">Clear All</button>
+        </div>
+        <div id="container"></div>
+    </div>
     <div class="calculator">
         <div class="textarea">
-            <input type="text" id="textarea">
+            <input type="text" id="textarea" title="Please enter numbers only" disabled>
         </div>
         <div class="buttons">
             <div class="numbers">

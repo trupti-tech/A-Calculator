@@ -4,7 +4,17 @@ let operations = document.querySelectorAll('.operation');
 let clearButton = document.getElementById('clear');
 let clearAllButton = document.getElementById('clearAll');
 let equalsButton = document.getElementById('equals');
+let historyContainer = document.getElementById("container");
+let clearHistory = document.getElementById("clearHistory");
 let shouldClear = false;
+
+clearHistory.addEventListener('click', () => {
+    historyContainer.innerHTML = '';
+})
+const setText = (e) => {
+    textarea.value = e.innerText.split("=")[0].trim();
+}
+
 
 const clearOne = () => {
     textarea.value = textarea.value.slice(0, -1);
@@ -17,23 +27,33 @@ const clearAll = () => {
 }
 
 const evaluateExpression = () => {
+    historyContainer.innerHTML += 
+    `<div class='c' onclick="setText(this)"><p class='cal'>${textarea.value} = <strong>${eval(textarea.value)} </strong></p></div>`
     textarea.value = eval(textarea.value);
     shouldClear = true;
+    calculations = document.querySelectorAll('.cal');
 }
 
 document.addEventListener('keydown', (e) => {
     if(e.key === 'Enter' || e.key === '=') {
+        e.preventDefault()
         if(textarea.value === ''){
             return;
         }
         evaluateExpression();
     }
     else if(e.key === 'Backspace') {
+        e.preventDefault()
         clearOne();
+    }
+    else if(e.key === 'Escape'){
+        e.preventDefault()
+        clearAll();
     }
     else{
         if(['+', '-', '*', '/'].includes(e.key))
         {
+            e.preventDefault()
             if(['+', '-', '*', '/'].includes(textarea.value[textarea.value.length - 1])) {
                 textarea.value = textarea.value.slice(0, -1);
             }
@@ -46,6 +66,7 @@ document.addEventListener('keydown', (e) => {
             textarea.value += e.key;
         }
         else if(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'].includes(e.key)) {
+            e.preventDefault()
             if(shouldClear) {
                 textarea.value = '';
                 shouldClear = false;
